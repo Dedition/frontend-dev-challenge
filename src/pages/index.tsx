@@ -190,7 +190,7 @@ export default function Home() {
                           <p> This school is found in {school.county} </p>
                           <p> Highest attainable degree here is a {school.highestDegree} </p>
                           {location ? (
-                            <p>This school is {getDistance(school)}km away from you</p>
+                            <p className={styles.distanceUser}>This school is <em>{getDistance(school)}km</em> away from you</p>
                           ) : (
                             <p className={styles.enableHighAccuracy}>Enable location to see how far away {school.name} is from you</p>
                           )}
@@ -215,7 +215,7 @@ export default function Home() {
                           <p> Highest attainable degree here is a {school.highestDegree} </p>
                           {/* If the user has accepted location then */}
                           {location ? (
-                            <p>This school is {getDistance(school)}km away from you</p>
+                            <p className={styles.distanceUser}>This school is <em>{getDistance(school)}km</em> away from you</p>
                           ) : (
                             <p className={styles.enableHighAccuracy}>Enable location to see how far away {school.name} is from you</p>
                           )}

@@ -95,10 +95,11 @@
     height: 48px;
     border: none;
     border-radius: 4px;
-    margin-left: 15%;
-    padding: 0 16px;
     font-size: 1rem;
     box-shadow: 0 20px 20px #190151;
+    padding: 0 16px;
+    /* margin-left: 15%; */
+    margin: 0 auto;
     z-index: 1;
 }
 
@@ -182,6 +183,42 @@
 
 .school__container:hover {
     background: #151921;
+}
+
+
+.school__name {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font: small-caption "Fira Sans", sans-serif;
+    margin-left: 5%;
+    margin-top: 2%;
+}
+
+.school__county {
+    font-size: 0.9rem;
+    font: italic;
+}
+
+.distanceUser {
+    display: flex;
+    color: orangered;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font: small-caption "Fira Sans", sans-serif;
+}
+
+.enableHighAccuracy {
+    display: flex;
+    color: orangered;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font: small-caption "Fira Sans", sans-serif;
+    margin-left: 5%;
+    margin-top: 2%;
 }
 
 
