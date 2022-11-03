@@ -6,6 +6,7 @@ import 'tippy.js/animations/scale.css';
 import 'tippy.js/animations/perspective.css';
 import styles from '../styles/Home.module.css'
 import Image from 'next/image'
+import { log } from 'console';
 const Logo = require('../assets/logo.svg') as string;
 const SearchIcon = require('../assets/search.svg') as string;
 
@@ -83,7 +84,7 @@ export default function Home() {
   // Find out the distance between the user and the school
   const getDistance = (school: any) => {
     if (location) {
-      const distanceFromUser = distance(userLocation.lat, userLocation.lng, school.lat, school.lng, 'K');
+      const distanceFromUser = distance(userLocation.lat, userLocation.lng, school.coordinates.lat, school.coordinates.long, 'K');
       return distanceFromUser.toFixed(2);
     } else {
       return null;
@@ -98,8 +99,8 @@ export default function Home() {
 
     if (location) {
       return mappedSchools?.sort((a: any, b: any) => {
-        const distanceA = distance(userLocation.lat, userLocation.lng, a.lat, a.lng, 'K');
-        const distanceB = distance(userLocation.lat, userLocation.lng, b.lat, b.lng, 'K');
+        const distanceA = distance(userLocation.lat, userLocation.lng, a.coordinates.lat, a.coordinates.long, 'K');
+        const distanceB = distance(userLocation.lat, userLocation.lng, b.coordinates.lat, b.coordinates.long, 'K');
 
         return distanceA - distanceB;
       })
@@ -144,7 +145,7 @@ export default function Home() {
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(success, error, options);
-  }, [location, options]);
+  }, []);
 
 
   return (
@@ -216,7 +217,7 @@ export default function Home() {
                           {location ? (
                             <p>This school is {getDistance(school)}km away from you</p>
                           ) : (
-                            <p>Enable location to see how far away {school.name} is from you</p>
+                            <p className={styles.enableHighAccuracy}>Enable location to see how far away {school.name} is from you</p>
                           )}
                         </div>
                       }>
