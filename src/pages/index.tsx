@@ -84,7 +84,7 @@ export default function Home() {
   const sortSchools = (...schools: Array<any>) => {
     // This function sorts the schools by distance from the user
     // It takes in an array of schools and returns a sorted array of schools based on distance from the user
-    const mappedSchools = schools[0].map.schools?.map((school: any) => school)
+    const mappedSchools = schools[0].schools?.map((school: any) => school)
 
     if (location) {
       return mappedSchools?.sort((a: any, b: any) => {
@@ -169,6 +169,20 @@ export default function Home() {
             onChange={handleSearchChange}
           />
         </form>
+        <div className={styles.search__container}>
+          <ul>
+            {sortSchools(schools)?.map((school: any) => (
+              <li
+                key={school.id}
+                className={styles.school_id}
+              >
+                <div className={styles.school__container} id={school.name} onMouseEnter={() => handleHover(school)} onMouseLeave={handleHoverLeave}>
+
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
 
