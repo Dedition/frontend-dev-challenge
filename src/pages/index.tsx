@@ -37,8 +37,7 @@ export default function Home() {
     console.log(`Roughly ${crd.accuracy} meters.`);
 
     setUserLocation({
-      lat: crd.latitude,
-      lng: crd.longitude
+      lat: crd.latitude, lng: crd.longitude
     });
 
     setLocation(true);
@@ -81,6 +80,17 @@ export default function Home() {
     }
   }
 
+  // Find out the distance between the user and the school
+  const getDistance = (school: any) => {
+    if (location) {
+      const distanceFromUser = distance(userLocation.lat, userLocation.lng, school.lat, school.lng, 'K');
+      return distanceFromUser.toFixed(2);
+    } else {
+      return null;
+    }
+  }
+
+
   const sortSchools = (...schools: Array<any>) => {
     // This function sorts the schools by distance from the user
     // It takes in an array of schools and returns a sorted array of schools based on distance from the user
@@ -120,13 +130,6 @@ export default function Home() {
     searchSchools(searchQuery);
   }
 
-  const handleSchoolClick = (school: any) => {
-    const schoolElement = document.getElementById(school.name);
-
-    if (schoolElement) {
-      schoolElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-  }
 
   const handleSearchChange = (e: any) => setSearchQuery(e.target.value);
 
@@ -134,18 +137,14 @@ export default function Home() {
 
   const handleHoverLeave = () => setHoveredSchool(null);
 
-  // const handleKeyPress = (e: any) => {
-  //   if (e.key === 'Enter') {
-  //     searchSchools(searchQuery);
-  //   }
-  // }
-
-
   useEffect(() => {
     getSchools();
-    navigator.geolocation.getCurrentPosition(success, error, options);
     // Empty dependency array so the function only runs once
   }, []);
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(success, error, options);
+  }, [location, options]);
 
 
   return (
@@ -189,9 +188,8 @@ export default function Home() {
                           <p> This is a {school.type.toLowerCase()} school </p>
                           <p> This school is found in {school.county} </p>
                           <p> Highest attainable degree here is a {school.highestDegree} </p>
-                          {/* If the user has accepted location then */}
                           {location ? (
-                            <p>This school is {distance(userLocation.lat, userLocation.lng, school.lat, school.lng, 'K').toFixed(2)}km away from you</p>
+                            <p>This school is {getDistance(school)}km away from you</p>
                           ) : (
                             <p>Enable location to see how far away {school.name} is from you</p>
                           )}
@@ -216,7 +214,7 @@ export default function Home() {
                           <p> Highest attainable degree here is a {school.highestDegree} </p>
                           {/* If the user has accepted location then */}
                           {location ? (
-                            <p>This school is {distance(userLocation.lat, userLocation.lng, school.lat, school.lng, 'K').toFixed(2)}km away from you</p>
+                            <p>This school is {getDistance(school)}km away from you</p>
                           ) : (
                             <p>Enable location to see how far away {school.name} is from you</p>
                           )}
@@ -228,6 +226,8 @@ export default function Home() {
                       </div>
                     </Tippy>
                   )}
+                  <p className={styles.school__letter}> {school.name[0]} </p>
+                </div>
               </li>
             ))}
           </ul>
