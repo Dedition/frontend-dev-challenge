@@ -185,7 +185,7 @@ export default function Home() {
                       arrow={true}
                       animation='scale'
                       content={
-                        <div>
+                        <div className={styles.tippyTooltip__text}>
                           <p> This is a {school.type.toLowerCase()} school </p>
                           <p> This school is found in {school.county} </p>
                           <p> Highest attainable degree here is a {school.highestDegree} </p>
@@ -209,7 +209,7 @@ export default function Home() {
                       arrow={true}
                       animation='perspective'
                       content={
-                        <div>
+                        <div className={styles.tippyTooltip__text}>
                           <p> This is a {school.type.toLowerCase()} school </p>
                           <p> This school is found in {school.county} </p>
                           <p> Highest attainable degree here is a {school.highestDegree} </p>
