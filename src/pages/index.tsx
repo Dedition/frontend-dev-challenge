@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import styles from '../styles/Home.module.css'
 import Image from 'next/image'
+const Logo = require('../assets/logo.svg') as string;
 
 
 export default function Home() {
@@ -134,7 +135,6 @@ export default function Home() {
   // }
 
 
-
   useEffect(() => {
     getSchools();
     navigator.geolocation.getCurrentPosition(success, error, options);
@@ -144,6 +144,12 @@ export default function Home() {
 
   return (
     <div className={styles.body}>
+      <div className={styles.header}>
+        <div className={styles.header__logo}>
+          <Image src={Logo} alt="Beacon Logo" className={styles.beacon__logo} />
+          <p>Beacon</p>
+        </div>
+      </div>
 
     </div>
   )
