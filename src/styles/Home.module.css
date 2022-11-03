@@ -65,3 +65,17 @@
     border-radius: 10px;
     padding-bottom: 32px;
 }
+
+.body form {
+    display: flex;
+    flex-direction: row;
+}
+
+.search__title {
+    color: #fff;
+    font-size: 3.25rem;
+    font-weight: 600;
+    margin: 32px 0;
+    line-height: 1.15;
+    text-align: center;
+}

@@ -192,7 +192,7 @@ export default function Home() {
                           {location ? (
                             <p>This school is {getDistance(school)}km away from you</p>
                           ) : (
-                            <p>Enable location to see how far away {school.name} is from you</p>
+                            <p className={styles.enableHighAccuracy}>Enable location to see how far away {school.name} is from you</p>
                           )}
                         </div>
                       }>
