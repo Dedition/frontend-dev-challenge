@@ -1,7 +1,14 @@
 .body {
-    background-color: rebeccapurple;
-    font-family: 'Roboto', sans-serif;
-    font-size: 1.2rem;
-    line-height: 1.5;
-    color: #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 0 0.5rem;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+        'Lucida Sans', Arial, sans-serif;
+    background: linear-gradient(90deg, rgb(47, 6, 133) 0%, rgba(0, 0, 0, 1) 100%);
 }
