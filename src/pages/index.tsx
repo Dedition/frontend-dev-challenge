@@ -177,7 +177,32 @@ export default function Home() {
                 className={styles.school_id}
               >
                 <div className={styles.school__container} id={school.name} onMouseEnter={() => handleHover(school)} onMouseLeave={handleHoverLeave}>
-
+                  {window.innerWidth > 600 ? (
+                    <Tippy
+                      theme='material'
+                      interactive={false}
+                      placement='right'
+                      arrow={true}
+                      animation='scale'
+                      content={
+                        <div>
+                          <p> This is a {school.type.toLowerCase()} school </p>
+                          <p> This school is found in {school.county} </p>
+                          <p> Highest attainable degree here is a {school.highestDegree} </p>
+                          {/* If the user has accepted location then */}
+                          {location ? (
+                            <p>This school is {distance(userLocation.lat, userLocation.lng, school.lat, school.lng, 'K').toFixed(2)}km away from you</p>
+                          ) : (
+                            <p>Enable location to see how far away {school.name} is from you</p>
+                          )}
+                        </div>
+                      }>
+                      <div className={styles.school__info}>
+                        <p className={styles.school__name} id={school.name}> {school.name} </p>
+                        <p className={styles.school__county}> {school.county.replace('County', '')} </p>
+                      </div>
+                    </Tippy>
+                  ) : (
                 </div>
               </li>
             ))}
