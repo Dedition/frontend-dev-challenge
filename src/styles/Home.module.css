@@ -12,3 +12,15 @@
         'Lucida Sans', Arial, sans-serif;
     background: linear-gradient(90deg, rgb(47, 6, 133) 0%, rgba(0, 0, 0, 1) 100%);
 }
+
+.header {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    top: 2%;
+    left: 10%;
+    width: 80%;
+    align-items: center;
+    padding: 1rem;
+    box-sizing: border-box;
+}
