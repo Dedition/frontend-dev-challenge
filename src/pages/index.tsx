@@ -108,6 +108,32 @@ export default function Home() {
     setSearchQuery('');
   }
 
+  const handleSearch = (e: any) => {
+    e.preventDefault();
+    searchSchools(searchQuery);
+  }
+
+  const handleSchoolClick = (school: any) => {
+    const schoolElement = document.getElementById(school.name);
+
+    if (schoolElement) {
+      schoolElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }
+
+  const handleSearchChange = (e: any) => setSearchQuery(e.target.value);
+
+  const handleHover = (school: any) => setHoveredSchool(school);
+
+  const handleHoverLeave = () => setHoveredSchool(null);
+
+  // const handleKeyPress = (e: any) => {
+  //   if (e.key === 'Enter') {
+  //     searchSchools(searchQuery);
+  //   }
+  // }
+
+
 
   useEffect(() => {
     getSchools();
