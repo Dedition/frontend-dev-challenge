@@ -60,6 +60,7 @@
 
 
 .container {
+    position: sticky;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -127,4 +128,28 @@
     outline: none;
     margin-left: -33px;
     cursor: pointer;
+}
+
+.search__icon {
+    position: sticky;
+    top: 25.5%;
+    border: none;
+    outline: none;
+}
+
+.search button:hover {
+    filter: invert(100%);
+}
+
+.search__container {
+    overflow: auto;
+    overflow-x: hidden;
+    height: 100vh;
+    width: 40vw;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+.search__container::-webkit-scrollbar {
+    width: 0;
 }
