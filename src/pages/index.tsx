@@ -1,7 +1,13 @@
 import { useState, useEffect } from 'react'
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
+import 'tippy.js/themes/material.css';
+import 'tippy.js/animations/scale.css';
+import 'tippy.js/animations/perspective.css';
 import styles from '../styles/Home.module.css'
 import Image from 'next/image'
 const Logo = require('../assets/logo.svg') as string;
+const SearchIcon = require('../assets/search.svg') as string;
 
 
 export default function Home() {
@@ -31,8 +37,7 @@ export default function Home() {
     console.log(`Roughly ${crd.accuracy} meters.`);
 
     setUserLocation({
-      lat: crd.latitude,
-      lng: crd.longitude
+      lat: crd.latitude, lng: crd.longitude
     });
 
     setLocation(true);
@@ -75,10 +80,21 @@ export default function Home() {
     }
   }
 
+  // Find out the distance between the user and the school
+  const getDistance = (school: any) => {
+    if (location) {
+      const distanceFromUser = distance(userLocation.lat, userLocation.lng, school.lat, school.lng, 'K');
+      return distanceFromUser.toFixed(2);
+    } else {
+      return null;
+    }
+  }
+
+
   const sortSchools = (...schools: Array<any>) => {
     // This function sorts the schools by distance from the user
     // It takes in an array of schools and returns a sorted array of schools based on distance from the user
-    const mappedSchools = schools[0].map.schools?.map((school: any) => school)
+    const mappedSchools = schools[0].schools?.map((school: any) => school)
 
     if (location) {
       return mappedSchools?.sort((a: any, b: any) => {
@@ -96,7 +112,7 @@ export default function Home() {
     const school = schools.schools?.find((school: any) => school.name.toLowerCase().includes(schoolName.toLowerCase()));
     const schoolElement = document.getElementById(schoolName);
 
-    if (schoolName.length < 5 || !school) alert('Please enter a valid school name');
+    if (schoolName.length < 4 || !school) alert('Please enter a valid school name with more than 3 characters.');
 
     if (schoolElement) {
       schoolElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -114,13 +130,6 @@ export default function Home() {
     searchSchools(searchQuery);
   }
 
-  const handleSchoolClick = (school: any) => {
-    const schoolElement = document.getElementById(school.name);
-
-    if (schoolElement) {
-      schoolElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-  }
 
   const handleSearchChange = (e: any) => setSearchQuery(e.target.value);
 
@@ -128,18 +137,14 @@ export default function Home() {
 
   const handleHoverLeave = () => setHoveredSchool(null);
 
-  // const handleKeyPress = (e: any) => {
-  //   if (e.key === 'Enter') {
-  //     searchSchools(searchQuery);
-  //   }
-  // }
-
-
   useEffect(() => {
     getSchools();
-    navigator.geolocation.getCurrentPosition(success, error, options);
     // Empty dependency array so the function only runs once
   }, []);
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(success, error, options);
+  }, [location, options]);
 
 
   return (
@@ -150,7 +155,85 @@ export default function Home() {
           <p>Beacon</p>
         </div>
       </div>
-
+      <div className={styles.container}>
+        <h1 className={styles.search__title}>Pick Your School</h1>
+        <form className={styles.search} onSubmit={handleSearch}>
+          <button type="submit" onClick={handleSearch} className={styles.search__button} disabled={!searchQuery}>
+            <Image src={SearchIcon} alt="Search Icon" className={styles.search__icon} />
+          </button>
+          <input
+            type="text"
+            placeholder="Search for your school..."
+            value={searchQuery}
+            onChange={handleSearchChange}
+          />
+        </form>
+        <div className={styles.search__container}>
+          <ul>
+            {sortSchools(schools)?.map((school: any) => (
+              <li
+                key={school.id}
+                className={styles.school_id}
+              >
+                <div className={styles.school__container} id={school.name} onMouseEnter={() => handleHover(school)} onMouseLeave={handleHoverLeave}>
+                  {window.innerWidth > 600 ? (
+                    <Tippy
+                      theme='material'
+                      interactive={false}
+                      placement='right'
+                      arrow={true}
+                      animation='scale'
+                      content={
+                        <div>
+                          <p> This is a {school.type.toLowerCase()} school </p>
+                          <p> This school is found in {school.county} </p>
+                          <p> Highest attainable degree here is a {school.highestDegree} </p>
+                          {location ? (
+                            <p>This school is {getDistance(school)}km away from you</p>
+                          ) : (
+                            <p>Enable location to see how far away {school.name} is from you</p>
+                          )}
+                        </div>
+                      }>
+                      <div className={styles.school__info}>
+                        <p className={styles.school__name} id={school.name}> {school.name} </p>
+                        <p className={styles.school__county}> {school.county.replace('County', '')} </p>
+                      </div>
+                    </Tippy>
+                  ) : (
+                    <Tippy
+                      theme='material'
+                      interactive={false}
+                      placement='top'
+                      arrow={true}
+                      animation='perspective'
+                      content={
+                        <div>
+                          <p> This is a {school.type.toLowerCase()} school </p>
+                          <p> This school is found in {school.county} </p>
+                          <p> Highest attainable degree here is a {school.highestDegree} </p>
+                          {/* If the user has accepted location then */}
+                          {location ? (
+                            <p>This school is {getDistance(school)}km away from you</p>
+                          ) : (
+                            <p>Enable location to see how far away {school.name} is from you</p>
+                          )}
+                        </div>
+                      }>
+                      <div className={styles.school__info}>
+                        <p className={styles.school__name} id={school.name}> {school.name} </p>
+                        <p className={styles.school__county}> {school.county.replace('County', '')} </p>
+                      </div>
+                    </Tippy>
+                  )}
+                  <p className={styles.school__letter}> {school.name[0]} </p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
     </div>
+
   )
 }
