@@ -13,6 +13,7 @@
     background: linear-gradient(90deg, rgb(47, 6, 133) 0%, rgba(0, 0, 0, 1) 100%);
 }
 
+
 .header {
     display: flex;
     flex-direction: row;
@@ -25,6 +26,7 @@
     box-sizing: border-box;
 }
 
+
 .header__logo {
     display: flex;
     height: 1em;
@@ -33,6 +35,7 @@
     align-items: center;
     justify-content: center;
 }
+
 
 .beacon__logo {
     height: 2.75em;
@@ -45,6 +48,7 @@
     justify-content: center;
 }
 
+
 .header__logo p {
     font-size: 2.5rem;
     color: #fff;
@@ -53,6 +57,7 @@
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: lighter;
 }
+
 
 .container {
     display: flex;
@@ -66,10 +71,6 @@
     padding-bottom: 32px;
 }
 
-.body form {
-    display: flex;
-    flex-direction: row;
-}
 
 .search__title {
     color: #fff;
@@ -80,6 +81,27 @@
     text-align: center;
 }
 
+
+.body form {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+}
+
+
+.search {
+    position: sticky;
+    height: 48px;
+    border: none;
+    border-radius: 4px;
+    margin-left: 15%;
+    padding: 0 16px;
+    font-size: 1rem;
+    box-shadow: 0 20px 20px #190151;
+    z-index: 1;
+}
+
+
 .search input {
     background: transparent;
     border: none;
@@ -87,8 +109,8 @@
     color: #fff;
     font-size: 24px;
     font-weight: 600;
-    padding: 10px 35px;
-    width: 100%;
+    padding: 10px 35px 10px 5px;
+    width: 80%;
     outline: none;
 }
 
@@ -96,4 +118,13 @@
     color: #9a9a9a;
     font-size: 1.2rem;
     font-weight: 400;
+}
+
+
+.search button {
+    background: transparent;
+    border: none;
+    outline: none;
+    margin-left: -33px;
+    cursor: pointer;
 }
