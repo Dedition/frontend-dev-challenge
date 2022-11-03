@@ -91,19 +91,55 @@ export default function Home() {
     }
   }
 
+  const searchSchools = (schoolName: string) => {
+    const school = schools.schools?.find((school: any) => school.name.toLowerCase().includes(schoolName.toLowerCase()));
+    const schoolElement = document.getElementById(schoolName);
+
+    if (schoolName.length < 5 || !school) alert('Please enter a valid school name');
+
+    if (schoolElement) {
+      schoolElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } else if (school) {
+      document.getElementById(school.name)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } else {
+      alert(`Sorry, we couldn't find '${schoolName}'. Please try again.`);
+    }
+
+    setSearchQuery('');
+  }
+
+  const handleSearch = (e: any) => {
+    e.preventDefault();
+    searchSchools(searchQuery);
+  }
+
+  const handleSchoolClick = (school: any) => {
+    const schoolElement = document.getElementById(school.name);
+
+    if (schoolElement) {
+      schoolElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }
+
+  const handleSearchChange = (e: any) => setSearchQuery(e.target.value);
+
+  const handleHover = (school: any) => setHoveredSchool(school);
+
+  const handleHoverLeave = () => setHoveredSchool(null);
+
+  // const handleKeyPress = (e: any) => {
+  //   if (e.key === 'Enter') {
+  //     searchSchools(searchQuery);
+  //   }
+  // }
+
+
+
   useEffect(() => {
     getSchools();
     navigator.geolocation.getCurrentPosition(success, error, options);
     // Empty dependency array so the function only runs once
   }, []);
-
-  // Att
-
-
-
-
-
-
 
 
   return (
