@@ -164,9 +164,30 @@
     cursor: help;
 }
 
-.school__lettr {
+
+.school__container {
     display: flex;
-    position: inherit;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background: rgba(39, 46, 60, 1);
+    border-radius: 10px;
+    margin: 0 auto;
+    padding: 0 0.5rem;
+    margin-top: 5%;
+    width: 520px;
+    min-height: 90px;
+    text-align: center;
+}
+
+.school__container:hover {
+    background: #151921;
+}
+
+
+.school__letter {
+    display: flex;
+    position: sticky;
     right: 100%;
     flex-direction: column;
     justify-content: center;
