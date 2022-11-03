@@ -91,19 +91,29 @@ export default function Home() {
     }
   }
 
+  const searchSchools = (schoolName: string) => {
+    const school = schools.schools?.find((school: any) => school.name.toLowerCase().includes(schoolName.toLowerCase()));
+    const schoolElement = document.getElementById(schoolName);
+
+    if (schoolName.length < 5 || !school) alert('Please enter a valid school name');
+
+    if (schoolElement) {
+      schoolElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } else if (school) {
+      document.getElementById(school.name)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } else {
+      alert(`Sorry, we couldn't find '${schoolName}'. Please try again.`);
+    }
+
+    setSearchQuery('');
+  }
+
+
   useEffect(() => {
     getSchools();
     navigator.geolocation.getCurrentPosition(success, error, options);
     // Empty dependency array so the function only runs once
   }, []);
-
-  // Att
-
-
-
-
-
-
 
 
   return (
