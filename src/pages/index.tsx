@@ -1,4 +1,9 @@
 import { useState, useEffect } from 'react'
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
+import 'tippy.js/themes/material.css';
+import 'tippy.js/animations/scale.css';
+import 'tippy.js/animations/perspective.css';
 import styles from '../styles/Home.module.css'
 import Image from 'next/image'
 const Logo = require('../assets/logo.svg') as string;
@@ -97,7 +102,7 @@ export default function Home() {
     const school = schools.schools?.find((school: any) => school.name.toLowerCase().includes(schoolName.toLowerCase()));
     const schoolElement = document.getElementById(schoolName);
 
-    if (schoolName.length < 5 || !school) alert('Please enter a valid school name');
+    if (schoolName.length < 4 || !school) alert('Please enter a valid school name with more than 3 characters.');
 
     if (schoolElement) {
       schoolElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
