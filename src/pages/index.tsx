@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import styles from '../styles/Home.module.css'
 import Image from 'next/image'
 const Logo = require('../assets/logo.svg') as string;
+const SearchIcon = require('../assets/search.svg') as string;
 
 
 export default function Home() {
@@ -150,7 +151,21 @@ export default function Home() {
           <p>Beacon</p>
         </div>
       </div>
-
+      <div className={styles.container}>
+        <h1 className={styles.search__title}>Pick Your School</h1>
+        <form className={styles.search} onSubmit={handleSearch}>
+          <button type="submit" onClick={handleSearch} className={styles.search__button} disabled={!searchQuery}>
+            <Image src={SearchIcon} alt="Search Icon" className={styles.search__icon} />
+          </button>
+          <input
+            type="text"
+            placeholder="Search for your school..."
+            value={searchQuery}
+            onChange={handleSearchChange}
+          />
+        </form>
+      </div>
     </div>
+
   )
 }
