@@ -242,7 +242,7 @@ export default function Home() {
                       content={
                         <div className={styles.tippyTooltip__text}>
                           <p> This is a {school.type.toLowerCase()} school </p>
-                          <p> This school is found in {school.county} </p>
+                          <p> This school is found in {school.state}, {school.county} </p>
                           <p> Highest attainable degree here is a {school.highestDegree} </p>
                           {/*
                           This conditional statement checks if the user has allowed location access.
