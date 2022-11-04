@@ -198,6 +198,7 @@
 
 .school__container:hover {
     background: #161921;
+    transition: 0.3s;
 }
 
 
