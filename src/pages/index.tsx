@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 import Image from 'next/image'
 import Tippy from '@tippyjs/react';
@@ -172,7 +173,14 @@ export default function Home() {
     <div className={styles.body}>
       <div className={styles.header}>
         <div className={styles.header__logo}>
-          <Image src={Logo} alt="Beacon Logo" className={styles.beacon__logo} />
+          {/* Add anchor tag href to logo */}
+          <Link
+            href="https://www.sendbeacon.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Image src={Logo} alt="Beacon Logo" className={styles.beacon__logo} />
+          </Link>
           <p>Beacon</p>
         </div>
       </div>
