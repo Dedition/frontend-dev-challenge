@@ -175,7 +175,7 @@
 
 .school__container {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     color: white;
     background: rgba(39, 46, 60, 1);
@@ -227,38 +227,43 @@
 }
 
 
-.school__name {
+.school__info {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font: small-caption "Fira Sans", sans-serif;
-    margin-left: 5%;
-    margin-top: 2%;
+    align-items: flex-start;
+    padding: 0 10px;
+}
+
+.school__name {
+    margin-top: 10px;
+    margin-bottom: 0px;
+    font-weight: bolder;
 }
 
 .school__county {
     font-size: 0.9rem;
+    font-weight: lighter;
 }
 
 
 .school__letter {
     display: flex;
-    position: sticky;
-    right: 100%;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
-    width: 50px;
-    height: 50px;
+    justify-content: center;
+    width: 53px;
+    height: 53px;
+    font-size: 2.2rem;
     background: #fff;
     color: #fff;
-    font-size: 2rem;
     font-weight: 600;
     margin: 0;
     padding: 0;
     border-radius: 50%;
     background: linear-gradient(127.55deg, #0224D9 -44.16%, #04002B 74.85%);
+}
+
+.school__letters {
+    margin: 0;
 }
 
 /* TODO Mobile Styling */
@@ -302,10 +307,24 @@
         padding: 0 10px;
     }
 
-    .school__letter {
-        width: 35px;
-        height: 35px;
-        font-size: 1rem;
+
+    .school__name {
+        font-size: 0.68rem;
+        font-weight: bolder;
+    }
+
+    .school__county {
+        font-size: 0.5rem;
+        font-weight: lighter;
+    }
+
+
+    .school__letters {
+        font-size: 1.0rem;
+    }
+
+    .school__info {
+        padding: 0 2px;
     }
 
 
@@ -317,5 +336,25 @@
 
     .header p {
         font-size: 1.55rem;
+    }
+}
+
+
+@media (max-width: 400px) {
+
+    .school__letters {
+        font-size: 1.8rem;
+    }
+
+    .school__name {
+        font-size: 0.496rem;
+        font-weight: bolder;
+        padding: 0 2.6px;
+    }
+
+    .school__county {
+        font-size: 0.4rem;
+        font-weight: lighter;
+        padding: 0 2.6px;
     }
 }
