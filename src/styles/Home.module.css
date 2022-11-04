@@ -270,8 +270,12 @@
 @media (max-width: 600px) {
 
     .body {
-        max-width: 600;
+        width: 600px;
+        height: 100% !important;
         margin: 0 auto;
+        background: linear-gradient(90deg, rgb(47, 6, 133) 0%, rgba(0, 0, 0, 1) 100%);
+        background-position: center;
+        background-size: cover;
     }
 
     .search__title {
@@ -290,5 +294,11 @@
         width: 100%;
         margin: 0 auto;
         padding: 0 10px;
+    }
+
+    .school__letter {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
     }
 }
