@@ -171,7 +171,6 @@ export default function Home() {
     <div className={styles.body}>
       <div className={styles.header}>
         <div className={styles.header__logo}>
-          {/* Add anchor tag href to logo */}
           <Link
             href="https://www.sendbeacon.com/"
             target="_blank"
