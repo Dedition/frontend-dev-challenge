@@ -218,7 +218,7 @@ export default function Home() {
                       content={
                         <div className={styles.tippyTooltip__text}>
                           <p> This is a {school.type.toLowerCase()} school </p>
-                          <p> This school is found in {school.county} </p>
+                          <p> This school is found in {school.state}, {school.county},  </p>
                           <p> Highest attainable degree here is a {school.highestDegree} </p>
                           {location ? (
                             <p className={styles.distanceUser}>This school is <em>{getDistance(school)}km</em> away from you</p>
@@ -271,3 +271,7 @@ export default function Home() {
 
   )
 }
+
+
+// state then county or county then state
+// Typically you goo

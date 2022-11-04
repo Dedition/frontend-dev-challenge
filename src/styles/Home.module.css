@@ -76,10 +76,11 @@
 
 .search__title {
     color: #fff;
-    font-size: 3.25rem;
-    font-weight: 600;
-    margin: 32px 0;
-    line-height: 1.15;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 54px;
     text-align: center;
 }
 
@@ -213,8 +214,6 @@
 }
 
 
-
-
 .distanceUser {
     display: flex;
     color: orangered;
@@ -248,7 +247,6 @@
 
 .school__county {
     font-size: 0.9rem;
-    font: italic;
 }
 
 
