@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react'
-import Link from 'next/link'
-import styles from '../styles/Home.module.css'
-import Image from 'next/image'
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import styles from '../styles/Home.module.css';
+import Image from 'next/image';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import 'tippy.js/themes/material.css';
@@ -100,7 +100,7 @@ export default function Home() {
     // This function sorts the schools by distance from the user
     // It takes in an array of schools and returns a sorted array of schools based on distance from the user
     // If the user does not allow location access, it will sort the schools alphabetically
-    const mappedSchools = schools[0].schools?.map((school: any) => school)
+    const mappedSchools = schools[0].schools?.map((school: any) => school);
 
     if (location) {
       return mappedSchools?.sort((a: any, b: any) => {
@@ -137,7 +137,6 @@ export default function Home() {
     } else if (school) {
       document.getElementById(school.name).scrollIntoView({ behavior: 'smooth', block: 'center' });
       document.getElementById(school.name).classList.add(styles.highlight);
-      console.log(document.getElementById(school.name))
       setTimeout(() => {
         document.getElementById(school.name).classList.remove(styles.highlight);
         setHoveredSchool(null);
