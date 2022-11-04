@@ -344,6 +344,15 @@
 
 @media (max-width: 400px) {
 
+    .search__title {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 0;
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+        margin-right: 25%;
+    }
+
     .school__letters {
         font-size: 1.8rem;
     }
