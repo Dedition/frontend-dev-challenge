@@ -139,7 +139,6 @@ export default function Home() {
       document.getElementById(school.name).classList.add(styles.highlight);
       setTimeout(() => {
         document.getElementById(school.name).classList.remove(styles.highlight);
-        setHoveredSchool(null);
       }, 4500);
     } else {
       alert(`Sorry, we couldn't find ${schoolName}.`);
