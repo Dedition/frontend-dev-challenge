@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react'
+import styles from '../styles/Home.module.css'
+import Image from 'next/image'
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import 'tippy.js/themes/material.css';
 import 'tippy.js/animations/scale.css';
 import 'tippy.js/animations/perspective.css';
-import styles from '../styles/Home.module.css'
-import Image from 'next/image'
-import { log } from 'console';
 const Logo = require('../assets/logo.svg') as string;
 const SearchIcon = require('../assets/search.svg') as string;
 
@@ -29,13 +28,16 @@ export default function Home() {
     setSchools(data);
   }
 
+  // This custom hook gets the user's location and sets the location state to true if the user allows location access
   const success = (position: GeolocationPosition) => {
     const crd = position.coords;
 
-    console.log('Your current position is:');
-    console.log(`Latitude : ${crd.latitude}`);
-    console.log(`Longitude: ${crd.longitude}`);
-    console.log(`Roughly ${crd.accuracy} meters.`);
+    // These console logs are for testing purposes
+
+    // console.log('Your current position is:');
+    // console.log(`Latitude : ${crd.latitude}`);
+    // console.log(`Longitude: ${crd.longitude}`);
+    // console.log(`Roughly ${crd.accuracy} meters.`);
 
     setUserLocation({
       lat: crd.latitude, lng: crd.longitude
@@ -44,6 +46,7 @@ export default function Home() {
     setLocation(true);
   }
 
+  // This custom hook gets the user's location and sets the location state to false if the user does not allow location access
   const error = (err: GeolocationPositionError) => {
     console.warn(`ERROR(${err.code}): ${err.message}`);
 
@@ -81,7 +84,7 @@ export default function Home() {
     }
   }
 
-  // Find out the distance between the user and the school
+  // This function gets the distance from the user to the school and returns it in kilometers
   const getDistance = (school: any) => {
     if (location) {
       const distanceFromUser = distance(userLocation.lat, userLocation.lng, school.coordinates.lat, school.coordinates.long, 'K');
@@ -95,6 +98,7 @@ export default function Home() {
   const sortSchools = (...schools: Array<any>) => {
     // This function sorts the schools by distance from the user
     // It takes in an array of schools and returns a sorted array of schools based on distance from the user
+    // If the user does not allow location access, it will sort the schools alphabetically
     const mappedSchools = schools[0].schools?.map((school: any) => school)
 
     if (location) {
@@ -109,6 +113,14 @@ export default function Home() {
     }
   }
 
+
+  /*
+  This function searches for a school in the list of schools by taking in the school name and searching for it in the list of schools.
+  It searches via the id of the li element and scrolls to the school if it exists.
+  If the school name is less than 4 characters, it will alert the user to enter a valid school name.
+  I add a highlight class to the school name for 3 seconds when the user searches for a school and it exists for better visibility.
+  The setTimeout function removes the highlight class after 3 seconds.
+  */
   const searchSchools = (schoolName: string) => {
     const school = schools.schools?.find((school: any) => school.name.toLowerCase().includes(schoolName.toLowerCase()));
     const schoolElement = document.getElementById(schoolName);
@@ -148,13 +160,11 @@ export default function Home() {
 
   const handleHoverLeave = () => setHoveredSchool(null);
 
-  useEffect(() => {
-    getSchools();
-    // Empty dependency array so the function only runs once
-  }, []);
 
   useEffect(() => {
+    getSchools();
     navigator.geolocation.getCurrentPosition(success, error, options);
+    // Empty dependency array so the function only runs once
   }, []);
 
 
@@ -187,6 +197,10 @@ export default function Home() {
                 className={styles.school_id}
               >
                 <div className={styles.school__container} id={school.name} onMouseEnter={() => handleHover(school)} onMouseLeave={handleHoverLeave}>
+                  {/*
+                  This conditional statement checks if the window width is greater than 600px.
+                  If it is, it will render the Tippy tooltip.
+                  */}
                   {window.innerWidth > 600 ? (
                     <Tippy
                       theme='material'
@@ -223,7 +237,9 @@ export default function Home() {
                           <p> This is a {school.type.toLowerCase()} school </p>
                           <p> This school is found in {school.county} </p>
                           <p> Highest attainable degree here is a {school.highestDegree} </p>
-                          {/* If the user has accepted location then */}
+                          {/*
+                          This conditional statement checks if the user has allowed location access.
+                          */}
                           {location ? (
                             <p className={styles.distanceUser}>This school is <em>{getDistance(school)}km</em> away from you</p>
                           ) : (
