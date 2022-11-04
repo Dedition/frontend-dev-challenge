@@ -1,16 +1,14 @@
 .body {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    padding: 0 0.5rem;
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
         'Lucida Sans', Arial, sans-serif;
-    background: linear-gradient(90deg, rgb(47, 6, 133) 0%, rgba(0, 0, 0, 1) 100%);
+    background: linear-gradient(127.55deg, #4502D9 -44.16%, #000000 74.85%), #000000;
 }
 
 
@@ -38,7 +36,7 @@
 
 
 .beacon__logo {
-    height: 2.75em;
+    height: 27px;
     width: auto;
     margin: 0;
     padding: 0;
@@ -50,10 +48,13 @@
 
 
 .header__logo p {
-    font-size: 2.5rem;
+    font-size: 1.2rem;
     color: #fff;
-    margin: 0;
+    margin: 0 8px;
     padding: 0;
+    font-weight: 200;
+    font-size: 18px;
+    line-height: 21px;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: lighter;
 }
@@ -98,16 +99,15 @@
     font-size: 1rem;
     box-shadow: 0 20px 20px #190151;
     padding: 0 16px;
-    /* margin-left: 15%; */
     margin: 0 auto;
     z-index: 1;
+    border-bottom: 1px solid #fff;
 }
 
 
 .search input {
     background: transparent;
     border: none;
-    border-bottom: 1px solid #fff;
     color: #fff;
     font-size: 24px;
     font-weight: 600;
@@ -150,8 +150,6 @@
     overflow: auto;
     overflow-x: hidden;
     height: 100vh;
-    width: 40vw;
-    margin: 0 auto;
     padding: 0 10px;
 }
 
@@ -161,13 +159,17 @@
 }
 
 
+.search__unordered {
+    padding: 0 2rem;
+}
+
+
 .school_id {
     display: flex;
     flex-direction: row;
     list-style: none;
     margin: 0;
     padding: 0;
-    margin-right: 41%;
     cursor: help;
 }
 
@@ -185,10 +187,10 @@
     color: white;
     background: rgba(39, 46, 60, 1);
     border-radius: 10px;
-    margin: 0 auto;
+    margin: 0 0;
     padding: 0 0.5rem;
     margin-top: 5%;
-    width: 520px;
+    width: 100%;
     min-height: 90px;
     text-align: center;
 }
@@ -262,7 +264,7 @@
     margin: 0;
     padding: 0;
     border-radius: 50%;
-    background: linear-gradient(90deg, rgba(4, 13, 106, 1) 0%, rgba(0, 0, 0, 1) 100%);
+    background: linear-gradient(127.55deg, #0224D9 -44.16%, #04002B 74.85%);
 }
 
 /* TODO Mobile Styling */
@@ -270,25 +272,56 @@
 @media (max-width: 600px) {
 
     .body {
-        max-width: 600;
+        width: 100%;
+        height: 100% !important;
         margin: 0 auto;
+        padding: 0;
     }
 
+
     .search__title {
+        display: flex;
+        justify-content: flex-end;
         margin-top: 0;
         margin-bottom: 1rem;
         font-size: 1.5rem;
         margin-right: 30%;
     }
 
+
     .search {
         width: 50%;
         margin-left: 12%;
     }
 
+
+    .search input::placeholder {
+        color: #9a9a9a;
+        font-size: 0.8rem;
+        font-weight: 400;
+    }
+
+
     .search__container {
         width: 100%;
         margin: 0 auto;
         padding: 0 10px;
+    }
+
+    .school__letter {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+
+
+    .header {
+        display: flex;
+        justify-content: center;
+    }
+
+
+    .header p {
+        font-size: 1.55rem;
     }
 }

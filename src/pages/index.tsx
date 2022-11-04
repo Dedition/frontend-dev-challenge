@@ -180,7 +180,7 @@ export default function Home() {
           />
         </form>
         <div className={styles.search__container}>
-          <ul>
+          <ul className={styles.search__unordered}>
             {sortSchools(schools)?.map((school: any) => (
               <li
                 key={school.id}
