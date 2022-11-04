@@ -195,6 +195,12 @@
     text-align: center;
 }
 
+
+.school__container:hover {
+    background: #161921;
+}
+
+
 .tippyTooltip__text {
     display: flex;
     flex-direction: column;
@@ -206,9 +212,6 @@
 }
 
 
-.school__container:hover {
-    background: #151921;
-}
 
 
 .distanceUser {
