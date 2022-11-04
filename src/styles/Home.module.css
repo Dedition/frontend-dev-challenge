@@ -309,18 +309,20 @@
 
 
     .school__name {
-        font-size: 0.68rem;
+        font-size: 1.05rem;
         font-weight: bolder;
+        padding: 0 2px;
     }
 
     .school__county {
-        font-size: 0.5rem;
+        font-size: 0.8rem;
         font-weight: lighter;
+        padding: 0 2px;
     }
 
 
     .school__letters {
-        font-size: 1.0rem;
+        font-size: 2.2rem;
     }
 
     .school__info {
