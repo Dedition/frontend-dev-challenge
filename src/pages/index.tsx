@@ -113,14 +113,24 @@ export default function Home() {
     const school = schools.schools?.find((school: any) => school.name.toLowerCase().includes(schoolName.toLowerCase()));
     const schoolElement = document.getElementById(schoolName);
 
-    if (schoolName.length < 4 || !school) alert('Please enter a valid school name with more than 3 characters.');
+    if (schoolName.length < 4) alert('Please enter a valid school name with more than 3 characters.');
 
     if (schoolElement) {
       schoolElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      schoolElement.classList.add(styles.highlight);
+      setTimeout(() => {
+        schoolElement.classList.remove(styles.highlight);
+      }, 3000);
     } else if (school) {
-      document.getElementById(school.name)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      document.getElementById(school.name).scrollIntoView({ behavior: 'smooth', block: 'center' });
+      document.getElementById(school.name).classList.add(styles.highlight);
+      console.log(document.getElementById(school.name))
+      setTimeout(() => {
+        document.getElementById(school.name).classList.remove(styles.highlight);
+        setHoveredSchool(null);
+      }, 4500);
     } else {
-      alert(`Sorry, we couldn't find '${schoolName}'. Please try again.`);
+      alert(`Sorry, we couldn't find ${schoolName}.`);
     }
 
     setSearchQuery('');

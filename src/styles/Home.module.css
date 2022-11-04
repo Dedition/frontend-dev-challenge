@@ -116,6 +116,7 @@
     outline: none;
 }
 
+
 .search input::placeholder {
     color: #9a9a9a;
     font-size: 1.2rem;
@@ -131,6 +132,7 @@
     cursor: pointer;
 }
 
+
 .search__icon {
     position: sticky;
     top: 25.5%;
@@ -138,9 +140,11 @@
     outline: none;
 }
 
+
 .search button:hover {
     filter: invert(100%);
 }
+
 
 .search__container {
     overflow: auto;
@@ -151,9 +155,11 @@
     padding: 0 10px;
 }
 
+
 .search__container::-webkit-scrollbar {
     width: 0;
 }
+
 
 .school_id {
     display: flex;
@@ -163,6 +169,12 @@
     padding: 0;
     margin-right: 41%;
     cursor: help;
+}
+
+
+.highlight {
+    background: rgb(109, 51, 234) !important;
+    color: #fff;
 }
 
 
@@ -251,4 +263,32 @@
     padding: 0;
     border-radius: 50%;
     background: linear-gradient(90deg, rgba(4, 13, 106, 1) 0%, rgba(0, 0, 0, 1) 100%);
+}
+
+/* TODO Mobile Styling */
+
+@media (max-width: 600px) {
+
+    .body {
+        max-width: 600;
+        margin: 0 auto;
+    }
+
+    .search__title {
+        margin-top: 0;
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+        margin-right: 30%;
+    }
+
+    .search {
+        width: 50%;
+        margin-left: 12%;
+    }
+
+    .search__container {
+        width: 100%;
+        margin: 0 auto;
+        padding: 0 10px;
+    }
 }
