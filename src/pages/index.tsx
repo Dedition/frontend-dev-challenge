@@ -208,6 +208,9 @@ export default function Home() {
                   This conditional statement checks if the window width is greater than 600px.
                   If it is, it will render the Tippy tooltip.
                   */}
+                  <div className={styles.school__letter}>
+                    <p className={styles.school__letters}> {school.name[0]} </p>
+                  </div>
                   {window.innerWidth > 600 ? (
                     <Tippy
                       theme='material'
@@ -260,14 +263,13 @@ export default function Home() {
                       </div>
                     </Tippy>
                   )}
-                  <p className={styles.school__letter}> {school.name[0]} </p>
                 </div>
               </li>
             ))}
           </ul>
         </div>
       </div>
-    </div>
+    </div >
 
   )
 }
