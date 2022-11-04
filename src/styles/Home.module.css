@@ -1,7 +1,294 @@
 .body {
-    background-color: rebeccapurple;
-    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 0 0.5rem;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+        'Lucida Sans', Arial, sans-serif;
+    background: linear-gradient(90deg, rgb(47, 6, 133) 0%, rgba(0, 0, 0, 1) 100%);
+}
+
+
+.header {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    top: 2%;
+    left: 10%;
+    width: 80%;
+    align-items: center;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+
+.header__logo {
+    display: flex;
+    height: 1em;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.beacon__logo {
+    height: 2.75em;
+    width: auto;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.header__logo p {
+    font-size: 2.5rem;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: lighter;
+}
+
+
+.container {
+    position: sticky;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 520px;
+    min-height: 600px;
+    text-align: center;
+    margin: 128px auto;
+    border-radius: 10px;
+    padding-bottom: 32px;
+}
+
+
+.search__title {
+    color: #fff;
+    font-size: 3.25rem;
+    font-weight: 600;
+    margin: 32px 0;
+    line-height: 1.15;
+    text-align: center;
+}
+
+
+.body form {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+}
+
+
+.search {
+    position: sticky;
+    height: 48px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-shadow: 0 20px 20px #190151;
+    padding: 0 16px;
+    /* margin-left: 15%; */
+    margin: 0 auto;
+    z-index: 1;
+}
+
+
+.search input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #fff;
+    color: #fff;
+    font-size: 24px;
+    font-weight: 600;
+    padding: 10px 35px 10px 5px;
+    width: 80%;
+    outline: none;
+}
+
+
+.search input::placeholder {
+    color: #9a9a9a;
     font-size: 1.2rem;
-    line-height: 1.5;
-    color: #333;
+    font-weight: 400;
+}
+
+
+.search button {
+    background: transparent;
+    border: none;
+    outline: none;
+    margin-left: -33px;
+    cursor: pointer;
+}
+
+
+.search__icon {
+    position: sticky;
+    top: 25.5%;
+    border: none;
+    outline: none;
+}
+
+
+.search button:hover {
+    filter: invert(100%);
+}
+
+
+.search__container {
+    overflow: auto;
+    overflow-x: hidden;
+    height: 100vh;
+    width: 40vw;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+
+.search__container::-webkit-scrollbar {
+    width: 0;
+}
+
+
+.school_id {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-right: 41%;
+    cursor: help;
+}
+
+
+.highlight {
+    background: rgb(109, 51, 234) !important;
+    color: #fff;
+}
+
+
+.school__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background: rgba(39, 46, 60, 1);
+    border-radius: 10px;
+    margin: 0 auto;
+    padding: 0 0.5rem;
+    margin-top: 5%;
+    width: 520px;
+    min-height: 90px;
+    text-align: center;
+}
+
+.tippyTooltip__text {
+    display: flex;
+    flex-direction: column;
+    color: whitesmoke;
+    font: small-caption "Fira Sans", sans-serif;
+    border-radius: 10px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+
+.school__container:hover {
+    background: #151921;
+}
+
+
+.distanceUser {
+    display: flex;
+    color: orangered;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font: small-caption "Fira Sans", sans-serif;
+}
+
+.enableHighAccuracy {
+    display: flex;
+    color: orangered;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font: small-caption "Fira Sans", sans-serif;
+    margin-left: 5%;
+    margin-top: 2%;
+}
+
+
+.school__name {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font: small-caption "Fira Sans", sans-serif;
+    margin-left: 5%;
+    margin-top: 2%;
+}
+
+.school__county {
+    font-size: 0.9rem;
+    font: italic;
+}
+
+
+.school__letter {
+    display: flex;
+    position: sticky;
+    right: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background: #fff;
+    color: #fff;
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 0;
+    padding: 0;
+    border-radius: 50%;
+    background: linear-gradient(90deg, rgba(4, 13, 106, 1) 0%, rgba(0, 0, 0, 1) 100%);
+}
+
+/* TODO Mobile Styling */
+
+@media (max-width: 600px) {
+
+    .body {
+        max-width: 600;
+        margin: 0 auto;
+    }
+
+    .search__title {
+        margin-top: 0;
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+        margin-right: 30%;
+    }
+
+    .search {
+        width: 50%;
+        margin-left: 12%;
+    }
+
+    .search__container {
+        width: 100%;
+        margin: 0 auto;
+        padding: 0 10px;
+    }
 }
